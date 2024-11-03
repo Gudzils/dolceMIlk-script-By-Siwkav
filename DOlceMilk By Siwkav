@@ -1,0 +1,107 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "DolceMilk",
+    LoadingTitle = "DolceMilk",
+    LoadingSubtitle = "by Siwkav",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil,
+       FileName = "AtlantHub"
+    },
+    Discord = {
+       Enabled = false,
+       Invite = "noinvitelink",
+       RememberJoins = true
+    },
+    KeySystem = false,
+    KeySettings = {
+       Title = "Untitled",
+       Subtitle = "Key System",
+       Note = "No method of obtaining the key is provided",
+       FileName = "Key",
+       SaveKey = true,
+       GrabKeyFromSite = false,
+       Key = {"Hello"}
+    }
+})
+
+local TrollTab = Window:CreateTab("Troll", 4483362458)
+
+TrollTab:CreateButton({
+    Name = "Troll",
+    Callback = function()
+        for _, b in pairs(workspace.Stairs:GetChildren()) do
+            if b:IsA("Part") then
+                b.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            end
+        end
+    end,
+})
+
+local OwnerTab = Window:CreateTab("Owner")
+
+OwnerTab:CreateButton({
+    Name = "Panel Owner",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end,
+})
+
+local DostupTab = Window:CreateTab("Dostup")
+
+DostupTab:CreateButton({
+    Name = "AdminDostup",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local guiList = {
+            "ButtonControl",
+            "HDAdminGUIs",
+            "Mobile/ConsoleshiftLock",
+            "RateGul",
+            "ScreenGul"
+        }
+        
+        for _, guiName in ipairs(guiList) do
+            local guiInstance = player:FindFirstChild(guiName) or player:WaitForChild(guiName, 5)
+            if guiInstance then
+                guiInstance.Enabled = true
+            end
+        end
+    end,
+})
+
+local KickTab = Window:CreateTab("Kick Dolce Milk")
+
+local isKicking = false
+
+KickTab:CreateButton({
+    Name = "Start Kicking",
+    Callback = function()
+        isKicking = not isKicking
+        if isKicking then
+            while isKicking do
+                local player = game.Players.LocalPlayer
+                if player and player.Backpack:FindFirstChild("Dolce Milk") then
+                    local tool = player.Backpack:FindFirstChild("Dolce Milk")
+                    tool.Parent = workspace
+                    wait(0.1)
+
+                    local newTool = tool:Clone()
+                    newTool.Parent = player.Backpack
+
+                    for _, otherPlayer in pairs(game.Players:GetPlayers()) do
+                        if otherPlayer ~= player then
+                            local otherTool = otherPlayer.Backpack:FindFirstChild("Dolce Milk")
+                            if otherTool then
+                                otherTool.Parent = player.Backpack
+                            end
+                        end
+                    end
+                end
+                wait(0.1)
+            end
+        end
+    end,
+})
+
